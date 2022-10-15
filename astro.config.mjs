@@ -7,8 +7,11 @@ import react from '@astrojs/react';
 import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
+import lit from "@astrojs/lit";
+
+// https://astro.build/config
 export default defineConfig({
-	integrations: [react()],
-	output: 'server',
-	adapter: cloudflare(),
+  integrations: [react(), lit()],
+  output: 'server',
+  adapter: cloudflare()
 });
