@@ -1,0 +1,28 @@
+{
+	"name": "@example/minimal",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "wrangler pages dev ./dist",
+		"astro": "astro",
+		"publish": "dotenv -e .env.local astro build && wrangler pages publish ./dist"
+	},
+	"dependencies": {
+		"@astrojs/cloudflare": "^3.1.0",
+		"@astrojs/react": "^1.2.0",
+		"@editorjs/editorjs": "^2.25.0",
+		"astro": "^1.5.0",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-editor-js": "^2.1.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.21",
+		"dotenv-cli": "^6.0.0",
+		"wrangler": "^2.1.11"
+	}
+}

@@ -1,0 +1,41 @@
+---
+import { Block, EditorRender } from '~/components/EditorRender';
+
+const id = Astro.params.id as string;
+
+interface Article {
+	id: string;
+	title: string;
+	description: string;
+	created_at: number;
+	updated_at: number;
+	file_id: string;
+	blocks: {
+		props: {
+			blockMap: {
+				time: number;
+				version: string;
+				blocks: Block[];
+			};
+		};
+	};
+}
+
+const postResponse = await fetch(
+	`https://ptrk-fm-worker.alexblokh.workers.dev/articles/${id}`,
+);
+const post = (await postResponse.json()) as Article;
+---
+
+<html lang='en'>
+	<head>
+		<meta charset='utf-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<title>{post.title}</title>
+		<link rel='icon' href='/favicon.ico' />
+	</head>
+	<body>
+		<h1>{post.title}</h1>
+		<EditorRender blocks={post.blocks.props.blockMap.blocks} />
+	</body>
+</html>
